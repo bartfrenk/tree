@@ -1,5 +1,7 @@
 # Tree
 
+## Introduction
+
 Simple implementation of rooted, edge-labeled trees, that hold values at the
 leaf nodes.
 
@@ -20,3 +22,16 @@ the leafs.
 >>> list(t.items())
 [([1, 2, 3], 'x'), ([2, 3], 'y'), ([3], 'z')]
 ```
+
+## Setup
+
+Clone this repository, and run `make` for a set of options. To build the Sphinx documentation:
+
+```
+make build-docs
+```
+
+## Documentation
+
+API documentation to be found at
+https://bartfrenk.github.io/tree/build/index.html.
