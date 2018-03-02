@@ -17,6 +17,19 @@ class Tree(object):
     def __init__(self):
         self._children = {}
 
+    @staticmethod
+    def from_items(items):
+        """Create a tree from a sequence of (path, value) pairs.
+
+        :param items: A sequence of (path, value) pairs.
+        :returns: A tree.
+        :rtype: Tree
+        """
+        t = Tree()
+        for (path, value) in items:
+            t[path] = value
+        return t
+
     def __getitem__(self, path):
         """Get the value or the subtree at the node where the path
         ends.
@@ -83,10 +96,3 @@ class Tree(object):
                     yield p
             else:
                 yield (prefix + [segment], t)
-
-    @staticmethod
-    def from_items(items):
-        t = Tree()
-        for (path, value) in items:
-            t[path] = value
-        return t
