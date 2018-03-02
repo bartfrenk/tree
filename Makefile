@@ -15,7 +15,7 @@ help: ## Show this help
 	fgrep -v fgrep | sed -e 's/## */##/' | column -t -s##
 
 docs/build/index.html: docs/source tree
-	sphinx-build $< $@
+	sphinx-build $< docs/build
 
 docs/build:
 	mkdir -p $@
