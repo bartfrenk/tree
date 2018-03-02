@@ -26,7 +26,8 @@ class Tree(object):
         :returns: Either a tree, or a value at the leaf, depending on where the
                   path ends.
         """
-
+        if not isinstance(path, list) and not isinstance(path, tuple):
+            return self._children[path]
         if len(path) == 1:
             return self._children[path[0]]
         return self._children[path[0]].__getitem__(path[1:])
@@ -40,7 +41,9 @@ class Tree(object):
 
         :returns: None
         """
-        if len(path) == 1:
+        if not isinstance(path, list) and not isinstance(path, tuple):
+            self._children[path] = value
+        elif len(path) == 1:
             self._children[path[0]] = value
         else:
             child = self._children.setdefault(path[0], Tree())
@@ -80,3 +83,10 @@ class Tree(object):
                     yield p
             else:
                 yield (prefix + [segment], t)
+
+    @staticmethod
+    def from_items(items):
+        t = Tree()
+        for (path, value) in items:
+            t[path] = value
+        return t
